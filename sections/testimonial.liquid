@@ -1,0 +1,110 @@
+<section class="testimonial" id="testimonial">
+    <h1 class="testimonial__title">{{ section.settings.testimonial_title }}</h1>
+    <div class="container page-width">
+        <div class="testimonial__cards">
+
+            {% for block in section.blocks %}
+
+                <div class="testimonial__card">
+                    <div class="testimonial__content">
+
+                        {% if block.settings.testimonial_quote != blank %}
+                            <img src="{{ block.settings.testimonial_quote | img_url: 'master' }}" alt="quotes">
+                        {% endif %}
+
+                        <p class="testimonial_saying
+                        ">{{ block.settings.testimonial_saying }}</p>
+
+                        {% if block.settings.testimonial_star != blank %}
+                            <img src="{{ block.settings.testimonial_star | img_url: 'master' }}" alt="star">
+                        {% endif %}
+                    </div>
+
+                    <div class="testimonial__icon">
+                        {% if block.settings.testimonial_profile != blank %}
+                            <img src="{{ block.settings.testimonial_profile | img_url: 'master' }}" alt="people">
+                        {% endif %}
+                        <p class="testimonial__name">{{ block.settings.testimonial_name }}</p>
+                    </div>
+                </div>
+                
+            {% endfor %}
+
+        </div>
+    </div>
+</section>
+
+<style>
+
+    #testimonial .testimonial__title {
+        text-align: center;
+    }
+    
+    #testimonial .testimonial__cards {
+        display: flex;
+        gap: 3rem;
+    }
+
+    #testimonial .testimonial__card {
+        background-color: #f1f1f1;
+        padding: 2rem 10rem;
+        text-align: center;
+    }
+
+</style>
+
+{% schema %}
+{
+    "name": "Testimonial",
+    "settings": [
+       {
+           "type": "text",
+           "id": "testimonial_title",
+           "label": "Put your title here",
+           "default": "Testimonial",
+           "info": "this will be the title of your section"
+       }
+    ],
+    "blocks": [
+        {
+            "name": "Testimonial",
+            "type": "testimonial",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "testimonial_quote",
+                    "label": "Testimonial Quote"
+                },
+                {
+                    "type": "textarea",
+                    "id": "testimonial_saying",
+                    "label": "Saying",
+                    "default": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat facilis placeat illum nostrum molestias"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "testimonial_star",
+                    "label": "Star"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "testimonial_profile",
+                    "label": "Profile"
+                },
+                {
+                    "type": "text",
+                    "id": "testimonial_name",
+                    "label": "label",
+                    "default": "John Doe"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "category": "testimonial",
+            "name": "Testimonial"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,39 @@
+<div class="heading-bar">
+    <img src="https://cdn.shopify.com/s/files/1/0551/0997/6179/files/image_22.png?v=1643887203" alt="LabelGuruIcon">
+</div>
+
+<style>
+    .heading-bar {
+        position: relative;
+        width: 520px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .heading-bar img {
+        margin: 0 auto;
+        display: block;
+        z-index: 1;
+        background-color: transparent;
+        position: relative;
+        padding: 0 16px;
+    }
+
+    .heading-bar::before,
+    .heading-bar::after {
+        content: '';
+        display: block;
+        background-color: #000;
+        width: 60px;
+        height: 2px;
+        position: absolute;
+        top: 50%;
+        left: 56.5%;
+        transform: translateY(-50%);
+    }
+
+    .heading-bar::before {
+        left: auto;
+        right: 56.5%;
+    }
+</style>
